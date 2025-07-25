@@ -1,12 +1,14 @@
 📁 youtube-sentiment-analyzer/
-   │
-   ├── public/
-   │   ├── index.html      👈 Frontend interface file
-   │   └── style.css       👈 Styling (CSS)
-   │
-   ├── index.js            👈 This is the backend server
-   ├── .env                👈 API key storage file
-   ├── package.json
+| Path / File                   | Description                          |
+| ----------------------------- | ------------------------------------ |
+| `youtube-sentiment-analyzer/` | 📁 Main project directory            |
+| ├── `public/`                 | 📁 Contains frontend assets          |
+| │   ├── `index.html`          | 👈 Frontend interface (HTML page)    |
+| │   └── `style.css`           | 👈 CSS styling file                  |
+| ├── `index.js`                | 👈 Backend server file (Node.js)     |
+| ├── `.env`                    | 👈 Stores your API key securely      |
+| ├── `package.json`            | 👈 Project metadata and dependencies |
+
 
 📦 Complete Project Steps:
 1. 📁 Create the project folder and navigate into it:
