@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>YouTube Sentiment Analyzer</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <div class="container">
+    <h1>🔍 تحليل مشاعر تعليقات فيديو يوتيوب</h1>
+
+    <label for="videoId">🔗 أدخل ID الخاص بالفيديو:</label>
+    <input type="text" id="videoId" placeholder="مثال: dQw4w9WgXcQ">
+    <button onclick="analyzeComments()">تحليل الآن</button>
+
+    <h2>📊 ملخص النتائج</h2>
+    <div id="summary">
+      <p>عدد التعليقات: <span id="total">-</span></p>
+      <p>إيجابية: <span id="positive">-</span></p>
+      <p>محايدة: <span id="neutral">-</span></p>
+      <p>سلبية: <span id="negative">-</span></p>
+    </div>
+
+    <h2>💬 التعليقات مع التحليل:</h2>
+    <table>
+      <thead>
+        <tr>
+          <th>التعليق</th>
+          <th>النتيجة</th>
+          <th>الدرجة</th>
+        </tr>
+      </thead>
+      <tbody id="results"></tbody>
+    </table>
+  </div>
+
+  <script>
+    async function analyzeComments() {
+      const videoId = document.getElementById('videoId').value.trim();
+      if (!videoId) return alert("يرجى إدخال معرف فيديو.");
+
+      const response = await fetch('/analyze', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ videoId })
+      });
+
+      const data = await response.json();
+      const table = document.getElementById('results');
+      table.innerHTML = ''; // تفريغ الجدول
+
+      data.comments.forEach(comment => {
+        const row = document.createElement('tr');
+        row.innerHTML = `
+          <td>${comment.text}</td>
+          <td>${comment.sentiment}</td>
+          <td>${comment.score}</td>
+        `;
+        table.appendChild(row);
+      });
+
+      // تحديث الملخص
+      document.getElementById('total').innerText = data.summary.total;
+      document.getElementById('positive').innerText = data.summary.positive;
+      document.getElementById('neutral').innerText = data.summary.neutral;
+      document.getElementById('negative').innerText = data.summary.negative;
+    }
+  </script>
+</body>
+</html>
