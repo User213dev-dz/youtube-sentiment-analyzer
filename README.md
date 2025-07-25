@@ -33,6 +33,7 @@ npm install express axios sentiment dotenv body-parser cors
 node index.js
 
 ✅ Make sure index.js exists and contains an Express server running on port 3000.
+
 5. 🌐 Open your browser:
 http://localhost:3000
 
