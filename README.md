@@ -1,74 +1,73 @@
-youtube-sentiment-analyzer/
+📁 youtube-sentiment-analyzer/
    │
    ├── public/
-   │   ├── index.html      👈 ملف الواجهة
-   │   └── style.css       👈 تنسيقات
+   │   ├── index.html      👈 Frontend interface file
+   │   └── style.css       👈 Styling (CSS)
    │
-   ├── index.js            👈 هذا هو الخادم
-   ├── .env                👈 مفتاح API
+   ├── index.js            👈 This is the backend server
+   ├── .env                👈 API key storage file
    ├── package.json
-📦 الخطوات الكاملة للمشروع:
-    1. 📁 إنشاء مجلد المشروع والدخول إليه:
-                                                                          mkdir youtube-sentiment-analyzer
-                                                                          cd youtube-sentiment-analyzer
 
-2. ⚙️ تهيئة مشروع Node.js:
-                                                                                                      npm init -y
-هذا ينشئ ملف package.json تلقائيًا.
-3. 📦 تثبيت الحزم المطلوبة:
-                                                       npm install express axios sentiment dotenv body-parser cors
+📦 Complete Project Steps:
+1. 📁 Create the project folder and navigate into it:
+mkdir youtube-sentiment-analyzer
+cd youtube-sentiment-analyzer
+2. ⚙️ Initialize Node.js project:
+npm init -y
+This automatically creates a package.json file.
+3. 📦 Install required packages:
+npm install express axios sentiment dotenv body-parser cors
 
-  | الوظيفة                                 |     الحزمة    |
-                                                                                 | ----------- | ------------------------------------- |
-                                                                                 | express     | لإنشاء الخادم (Backend server)             |
-                                                                                 | axios       | لجلب البيانات من YouTube API               |
-                                                                                 | sentiment   | لتحليل المشاعر Sentiment Analysis          |
-                                                                                 | dotenv      | لقراءة المتغيرات السرية من ملف `.env`          |
-                                                                                 | body-parser | لتحليل بيانات الطلب (Post body)             |
-                                                                                 | cors        | للسماح بالوصول من واجهة HTML frontend      |
-4. 🧪 تشغيل الخادم (server):
-                                                                                                   node index.js
+| Purpose                      | Package       |
+| ---------------------------- | ------------- |
+| Create backend server        | `express`     |
+| Fetch data from YouTube API  | `axios`       |
+| Sentiment analysis           | `sentiment`   |
+| Handle environment variables | `dotenv`      |
+| Parse request bodies         | `body-parser` |
+| Enable frontend access       | `cors`        |
 
-✅ تأكد أن ملف index.js موجود ويحتوي على خادم Express يعمل على المنفذ 3000.
-5. 🌐 فتح المتصفح: http://localhost:3000
-📊 النتيجة
-  1- تدخل ID فيديو يوتيوب مثل: dQw4w9WgXcQ
-  2- تضغط "حلل"
-                                                                                                   
-🛠️ ملاحظات احترافية:                          
-✅ ملف .env:
-استبدل YOUR_YOUTUBE_API_KEY بمفتاح API الحقيقي الذي حصلت عليه من Google Cloud Console:
-                                                YOUTUBE_API_KEY=YOUR_API_KEY_HERE
+4. 🧪 Run the backend server:
+node index.js
+
+✅ Make sure index.js exists and contains an Express server running on port 3000.
+5. 🌐 Open your browser:
+http://localhost:3000
+
+📊 Final Output:
+Enter a YouTube video ID (e.g., dQw4w9WgXcQ)
+Click "Analyze" to see the sentiment of the comments.
+
+🛠️ Pro Tips:
+✅ .env file:
+Replace YOUR_YOUTUBE_API_KEY with the actual API key you generated in Google Cloud Console:
+YOUTUBE_API_KEY=YOUR_API_KEY_HERE
+
+🔑 How to Get the YouTube Data API Key
+To create a working project using YouTube Data API v3, follow these steps:
+
+✅ Step 1: Create a Google Cloud Account & Project
+Visit: https://console.cloud.google.com
+Sign in with your Google account.
+Click "Select a project" at the top, then "New Project".
+Name it something like: YouTube Sentiment Project.
+Click "Create".
+
+✅ Step 2: Enable YouTube Data API v3
+Make sure you're inside your newly created project.
+Go to the left menu → APIs & Services → Library.
+Search for: YouTube Data API v3
+Click it, then click Enable.
+
+✅ Step 3: Generate an API Key
+Go to: APIs & Services → Credentials
+Click "Create Credentials" → choose "API Key"
+Copy the key shown (e.g., AIzaSyA...) and paste it in your .env file.
+
+🔐 Important Security Note:
+Never share your API key publicly.
+You can restrict its usage by:
+Setting IP address restrictions
+Specifying allowed websites/domains
 
 
-لإنشاء مشروع يعمل بـ YouTube Data API v3، ستحتاج إلى تنفيذ الخطوات التالية من البداية حتى توليد المفتاح (API Key) الذي يمكنك استخدامه في مشروع تحليل بيانات (مثلاً: تحليل مشاعر تعليقات فيديوهات اليوتيوب).
-
-✅ الخطوة 1: إنشاء حساب Google Cloud
-1- اذهب إلى: https://console.cloud.google.com
-2- قم بتسجيل الدخول باستخدام حساب Gmail.
-3- اضغط على "Select a project" في أعلى الصفحة، ثم على "New Project".
-4- أدخل اسمًا للمشروع مثل: YouTube Sentiment Project.
-5- اضغط على "Create".
-
-✅ الخطوة 2: تفعيل YouTube Data API v3
- بعد إنشاء المشروع، تأكد أنك داخل مشروعك.
- من القائمة الجانبية، اختر "APIs & Services" → ثم "Library".
- في خانة البحث، اكتب:YouTube Data API v3
-اختر النتيجة التي تظهر، ثم اضغط "Enable".
-
-✅ الخطوة 3: إنشاء مفتاح API (API Key)
- من القائمة الجانبية، اختر:"APIs & Services" → "Credentials"
- اضغط على "Create Credentials" → ثم اختر "API Key".
- سيظهر لك مفتاح، يمكنك نسخه (مثلاً: AIzaSyA...) واستعماله في مشروعك.
-
-🔐 ملاحظة مهمة:
-  لا تشارك المفتاح علنًا. يمكنك أيضًا تقييده عبر:
-    تحديد عنوان IP  أو تحديد المواقع المسموح بها
-
-
-
-    
-   
-
-
-   
